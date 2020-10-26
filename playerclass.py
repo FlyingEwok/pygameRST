@@ -1,5 +1,5 @@
 import pygame
-import mechanics
+import main
 
 # # Colors RGB
 BLACK = (0, 0, 0)
@@ -80,9 +80,9 @@ class Player(pygame.sprite.Sprite):
             self.change_y += .35
  
         # See if we are on the ground.
-        if self.rect.y >= mechanics.SCREEN_HEIGHT - self.rect.height and self.change_y >= 0:
+        if self.rect.y >= main.SCREEN_HEIGHT - self.rect.height and self.change_y >= 0:
             self.change_y = 0
-            self.rect.y = mechanics.SCREEN_HEIGHT - self.rect.height
+            self.rect.y = main.SCREEN_HEIGHT - self.rect.height
  
     def jump(self):
         """ Called when user hits 'jump' button. """
@@ -95,7 +95,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.y -= 2
  
         # If it is ok to jump, set our speed upwards
-        if len(platform_hit_list) > 0 or self.rect.bottom >= mechanics.SCREEN_HEIGHT:
+        if len(platform_hit_list) > 0 or self.rect.bottom >= main.SCREEN_HEIGHT:
             self.change_y = -10
  
     # Player-controlled movement:
