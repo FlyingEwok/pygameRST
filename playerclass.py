@@ -1,12 +1,6 @@
 import pygame
 import main
-
-# # Colors RGB
-BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
-GREEN = (0, 255, 0)
-RED = (255, 0, 0)
-BLUE = (0, 0, 255)
+import rgbColours
 
 class Player(pygame.sprite.Sprite):
     """
@@ -25,7 +19,7 @@ class Player(pygame.sprite.Sprite):
         width = 40
         height = 60
         self.image = pygame.Surface([width, height])
-        self.image.fill(RED)
+        self.image.fill(rgbColours.RED)
  
         # Set a referance to the image rect.
         self.rect = self.image.get_rect()

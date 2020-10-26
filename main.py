@@ -1,23 +1,13 @@
 import pygame
 import playerclass
+import levelclass
+import rgbColours
  
 # Code for mechanics taken from http://programarcadegames.com/python_examples/show_file.php?file=platform_scroller.py found from reddit user u/pvc https://www.reddit.com/r/learnprogramming/comments/20ejkg/tutorial_on_creating_a_platformer_in_python/
-
-# Global constants
- 
-# Colors RGB
-BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
-GREEN = (0, 255, 0)
-RED = (255, 0, 0)
-BLUE = (0, 0, 255)
  
 # Screen dimensions
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
- 
- 
-
  
  
 class Platform(pygame.sprite.Sprite):
@@ -30,66 +20,23 @@ class Platform(pygame.sprite.Sprite):
         super().__init__()
  
         self.image = pygame.Surface([width, height])
-        self.image.fill(GREEN)
+        self.image.fill(rgbColours.GREEN)
  
         self.rect = self.image.get_rect()
  
  
-class Level():
-    """ This is a generic super-class used to define a level.
-        Create a child class for each level with level-specific
-        info. """
- 
-    def __init__(self, player):
-        """ Constructor. Pass in a handle to player. Needed for when moving
-            platforms collide with the player. """
-        self.platform_list = pygame.sprite.Group()
-        self.enemy_list = pygame.sprite.Group()
-        self.player = player
- 
-        # How far this world has been scrolled left/right
-        self.world_shift = 0
- 
-    # Update everythign on this level
-    def update(self):
-        """ Update everything in this level."""
-        self.platform_list.update()
-        self.enemy_list.update()
- 
-    def draw(self, screen):
-        """ Draw everything on this level. """
- 
-        # Draw the background
-        screen.fill(BLUE)
- 
-        # Draw all the sprite lists that we have
-        self.platform_list.draw(screen)
-        self.enemy_list.draw(screen)
- 
-    def shift_world(self, shift_x):
-        """ When the user moves left/right and we need to scroll
-        everything: """
- 
-        # Keep track of the shift amount
-        self.world_shift += shift_x
- 
-        # Go through all the sprite lists and shift
-        for platform in self.platform_list:
-            platform.rect.x += shift_x
- 
-        for enemy in self.enemy_list:
-            enemy.rect.x += shift_x
+
  
  
 # Create platforms for the level
-class Level_01(Level):
+class Level_01(levelclass.Level):
     """ Definition for level 1. """
  
     def __init__(self, player):
         """ Create level 1. """
  
         # Call the parent constructor
-        Level.__init__(self, player)
+        levelclass.Level.__init__(self, player)
  
         self.level_limit = -1000
  
@@ -110,14 +57,14 @@ class Level_01(Level):
  
  
 # Create platforms for the level
-class Level_02(Level):
+class Level_02(levelclass.Level):
     """ Definition for level 2. """
  
     def __init__(self, player):
         """ Create level 1. """
  
         # Call the parent constructor
-        Level.__init__(self, player)
+        levelclass.Level.__init__(self, player)
  
         self.level_limit = -1000
  
