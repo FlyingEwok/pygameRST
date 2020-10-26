@@ -1,8 +1,10 @@
 import pygame
  
+# Code for mechanics taken from http://programarcadegames.com/python_examples/show_file.php?file=platform_scroller.py found from reddit user u/pvc https://www.reddit.com/r/learnprogramming/comments/20ejkg/tutorial_on_creating_a_platformer_in_python/
+
 # Global constants
  
-# Colors
+# Colors RGB
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
