@@ -1,5 +1,4 @@
 import levelclass
-import playerclass
 import platformclass
 
 # Create platforms for the level

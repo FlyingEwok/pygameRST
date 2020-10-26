@@ -1,7 +1,5 @@
 import pygame
 import playerclass
-import levelclass
-import rgbColours
 import level1class
 import level2class
  

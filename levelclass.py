@@ -1,6 +1,4 @@
 import pygame
-import main
-import playerclass
 import rgbColours
 
 class Level():
