@@ -10,7 +10,7 @@ class Platform(pygame.sprite.Sprite):
             """
         super().__init__()
  
-        self.image = pygame.Surface([width, height])
-        self.image.fill(rgbColours.GREEN)
+        self.image = pygame.image.load("tile-ground.png")  #pygame.Surface([width, height])
+        # self.image.fill(rgbColours.GREEN)
  
-        self.rect = self.image.get_rect()
+        # self.rect = self.image.get_rect()
