@@ -3,62 +3,12 @@ import playerclass
 import levelclass
 import rgbColours
 import level1class
+import level2class
  
-# Code for mechanics taken from http://programarcadegames.com/python_examples/show_file.php?file=platform_scroller.py found from reddit user u/pvc https://www.reddit.com/r/learnprogramming/comments/20ejkg/tutorial_on_creating_a_platformer_in_python/
  
 # Screen dimensions
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
- 
- 
-class Platform(pygame.sprite.Sprite):
-    """ Platform the user can jump on """
- 
-    def __init__(self, width, height):
-        """ Platform constructor. Assumes constructed with user passing in
-            an array of 5 numbers like what's defined at the top of this code.
-            """
-        super().__init__()
- 
-        self.image = pygame.Surface([width, height])
-        self.image.fill(rgbColours.GREEN)
- 
-        self.rect = self.image.get_rect()
- 
- 
-
- 
- 
-
- 
- 
-# Create platforms for the level
-class Level_02(levelclass.Level):
-    """ Definition for level 2. """
- 
-    def __init__(self, player):
-        """ Create level 1. """
- 
-        # Call the parent constructor
-        levelclass.Level.__init__(self, player)
- 
-        self.level_limit = -1000
- 
-        # Array with type of platform, and x, y location of the platform.
-        level = [[210, 30, 450, 570],
-                 [210, 30, 850, 420],
-                 [210, 30, 1000, 520],
-                 [210, 30, 1120, 280],
-                 ]
- 
-        # Go through the array above and add platforms
-        for platform in level:
-            block = Platform(platform[0], platform[1])
-            block.rect.x = platform[2]
-            block.rect.y = platform[3]
-            block.player = self.player
-            self.platform_list.add(block)
- 
  
 def main():
     """ Main Program """
@@ -76,7 +26,7 @@ def main():
     # Create all the levels
     level_list = []
     level_list.append(level1class.Level_01(player))
-    level_list.append(Level_02(player))
+    level_list.append(level2class.Level_02(player))
  
     # Set the current level
     current_level_no = 0
@@ -157,6 +107,3 @@ def main():
     # Be IDLE friendly. If you forget this line, the program will 'hang'
     # on exit.
     pygame.quit()
- 
-if __name__ == "__main__":
-    main()

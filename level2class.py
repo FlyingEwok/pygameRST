@@ -1,10 +1,9 @@
-import levelclass
-import playerclass
 import platformclass
+import levelclass
 
 # Create platforms for the level
-class Level_01(levelclass.Level):
-    """ Definition for level 1. """
+class Level_02(levelclass.Level):
+    """ Definition for level 2. """
  
     def __init__(self, player):
         """ Create level 1. """
@@ -14,11 +13,11 @@ class Level_01(levelclass.Level):
  
         self.level_limit = -1000
  
-        # Array with width, height, x, and y of platform
-        level = [[210, 70, 500, 500],
-                 [210, 70, 800, 400],
-                 [210, 70, 1000, 500],
-                 [210, 70, 1120, 280],
+        # Array with type of platform, and x, y location of the platform.
+        level = [[210, 30, 450, 570],
+                 [210, 30, 850, 420],
+                 [210, 30, 1000, 520],
+                 [210, 30, 1120, 280],
                  ]
  
         # Go through the array above and add platforms
