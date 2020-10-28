@@ -71,7 +71,7 @@ class Player(pygame.sprite.Sprite):
         if self.change_y == 0:
             self.change_y = 1
         else:
-            self.change_y += 0.15       # Default gravity = 0.35, High gravity = 0.55, Lowest gravity = 
+            self.change_y += 0.35       # Default gravity = 0.35, High gravity = 0.55, Lowest gravity = 
  
         # See if we are on the ground.
         if self.rect.y >= main.SCREEN_HEIGHT - self.rect.height and self.change_y >= 0:
