@@ -26,7 +26,9 @@ class Level():
         """ Draw everything on this level. """
  
         # Draw the background
-        screen.fill(rgbColours.BLUE)
+        # screen.fill(rgbColours.BLUE)
+        background = pygame.image.load('images/Test-Background.png')
+        screen.blit(background, (self.world_shift, 0))
  
         # Draw all the sprite lists that we have
         self.platform_list.draw(screen)

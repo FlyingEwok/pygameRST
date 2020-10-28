@@ -70,15 +70,15 @@ def main():
         current_level.update()
  
         # If the player gets near the right side, shift the world left (-x)
-        if player.rect.right >= 500:
-            diff = player.rect.right - 500
-            player.rect.right = 500
+        if player.rect.right >= 380:
+            diff = player.rect.right - 380
+            player.rect.right = 380
             current_level.shift_world(-diff)
  
         # If the player gets near the left side, shift the world right (+x)
-        if player.rect.left <= 120:
-            diff = 120 - player.rect.left
-            player.rect.left = 120
+        if player.rect.left <= 340:
+            diff = 340 - player.rect.left
+            player.rect.left = 340
             current_level.shift_world(diff)
  
         # If the player gets to the end of the level, go to the next level
@@ -96,8 +96,8 @@ def main():
  
         # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
  
-        # Limit to 60 frames per second
-        clock.tick(60)
+        # Limit to 75 frames per second
+        clock.tick(75)
  
         # Go ahead and update the screen with what we've drawn.
         pygame.display.flip()
