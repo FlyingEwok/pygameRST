@@ -10,6 +10,6 @@ class Platform(pygame.sprite.Sprite):
             """
         super().__init__()
  
-        self.image = pygame.Surface([width, height])
-        self.image.fill(rgbColours.GREEN)
+        self.image = pygame.Surface([width, height], pygame.SRCALPHA)
+        self.image.fill(rgbColours.WHITE)
         self.rect = self.image.get_rect()
