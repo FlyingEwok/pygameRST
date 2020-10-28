@@ -11,5 +11,5 @@ class Platform(pygame.sprite.Sprite):
         super().__init__()
  
         self.image = pygame.Surface([width, height], pygame.SRCALPHA)
-        self.image.fill(rgbColours.WHITE)
+        self.image.fill(rgbColours.TRANSPARENT)
         self.rect = self.image.get_rect()
