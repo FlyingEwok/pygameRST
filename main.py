@@ -1,5 +1,6 @@
 import pygame
 import playerclass
+import enemyclass
 import level1class
 import level2class
  
@@ -20,6 +21,7 @@ def main():
  
     # Create the player
     player = playerclass.Player()
+    enemy = enemyclass.Enemy()
  
     # Create all the levels
     level_list = []
@@ -32,10 +34,14 @@ def main():
  
     active_sprite_list = pygame.sprite.Group()
     player.level = current_level
+    enemy.level = current_level
  
     player.rect.x = 340
     player.rect.y = SCREEN_HEIGHT - player.rect.height
-    active_sprite_list.add(player)
+    enemy.rect.x = 709
+    enemy.rect.y = 520
+    active_sprite_list.add(player, enemy)
+    
  
     # Loop until the user clicks the close button.
     done = False

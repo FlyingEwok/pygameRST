@@ -1,5 +1,6 @@
 import pygame
 import rgbColours
+import enemyclass
 
 class Level():
     """ This is a generic super-class used to define a level.
@@ -10,6 +11,7 @@ class Level():
         """ Constructor. Pass in a handle to player. Needed for when moving
             platforms collide with the player. """
         self.platform_list = pygame.sprite.Group()
+        self.hitmarker_list = pygame.sprite.Group()
         self.enemy_list = pygame.sprite.Group()
         self.player = player
  
@@ -20,6 +22,7 @@ class Level():
     def update(self):
         """ Update everything in this level."""
         self.platform_list.update()
+        self.hitmarker_list.update()
         self.enemy_list.update()
  
     def draw(self, screen):
@@ -32,6 +35,7 @@ class Level():
  
         # Draw all the sprite lists that we have
         self.platform_list.draw(screen)
+        self.hitmarker_list.draw(screen)
         self.enemy_list.draw(screen)
  
     def shift_world(self, shift_x):
@@ -44,6 +48,9 @@ class Level():
         # Go through all the sprite lists and shift
         for platform in self.platform_list:
             platform.rect.x += shift_x
+
+        for marker in self.hitmarker_list:
+            marker.rect.x += shift_x
  
         for enemy in self.enemy_list:
             enemy.rect.x += shift_x
