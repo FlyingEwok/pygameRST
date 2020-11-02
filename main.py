@@ -38,7 +38,7 @@ def main():
  
     player.rect.x = 340
     player.rect.y = SCREEN_HEIGHT - player.rect.height
-    enemy.rect.x = 709
+    enemy.rect.x = 666
     enemy.rect.y = 520
     active_sprite_list.add(player, enemy)
     

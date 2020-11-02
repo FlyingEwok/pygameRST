@@ -38,14 +38,24 @@ class Enemy(pygame.sprite.Sprite):
  
         # Move left/right
         self.rect.x += self.change_x
- 
+        
+        
         # See if we hit anything
+        
         block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
-        for block in block_hit_list:
+        block_hit_list1 = pygame.sprite.spritecollide(self, self.level.hitmarker_list, False)
+        
+        print(block_hit_list)
+        print(block_hit_list1)
+        for x in block_hit_list1:
+            block_hit_list.append(x)
+
+
+        for block in block_hit_list: 
             # If we are moving right,
             # set our right side to the left side of the item we hit
             if self.change_x > 0:
-                self.rect.right = block.rect.left
+                #self.rect.right = block.rect.left
                 self.change_x = -2
             elif self.change_x < 0:
                 # Otherwise if we are moving left, do the opposite.
