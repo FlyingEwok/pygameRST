@@ -45,8 +45,6 @@ class Enemy(pygame.sprite.Sprite):
         block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
         block_hit_list1 = pygame.sprite.spritecollide(self, self.level.hitmarker_list, False)
         
-        print(block_hit_list)
-        print(block_hit_list1)
         for x in block_hit_list1:
             block_hit_list.append(x)
 
