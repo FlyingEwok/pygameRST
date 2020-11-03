@@ -1,6 +1,7 @@
 import pygame
 import main
 import rgbColours
+import levelclass
 
 class Enemy(pygame.sprite.Sprite):
     """
@@ -25,7 +26,7 @@ class Enemy(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
  
         # Set speed vector of enemy
-        self.change_x = 2
+        self.change_x = 0
         self.change_y = 0
  
         # List of sprites we can bump against
@@ -53,11 +54,9 @@ class Enemy(pygame.sprite.Sprite):
             # If we are moving right,
             # set our right side to the left side of the item we hit
             if self.change_x > 0:
-                #self.rect.right = block.rect.left
                 self.change_x = -2
             elif self.change_x < 0:
                 # Otherwise if we are moving left, do the opposite.
-                self.rect.left = block.rect.right
                 self.change_x = 2
  
         # Move up/down

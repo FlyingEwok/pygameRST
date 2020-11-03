@@ -1,6 +1,7 @@
 import levelclass
 import platformclass
 import invisablehitmarkerclass
+import enemyclass
 
 # Create platforms for the level
 class Level_01(levelclass.Level):
@@ -27,6 +28,11 @@ class Level_01(levelclass.Level):
                  [1, 140, 500, 360],
                  [1, 140, 709, 360]
                  ]
+
+        enemyList = [
+                [1, 1, 800, 520],
+                [1, 1, 666, 100]
+                ]
  
         # Go through the array above and add platforms
         for platform in levelPlatform:
@@ -41,3 +47,9 @@ class Level_01(levelclass.Level):
             marker.rect.x = hitmarker[2]
             marker.rect.y = hitmarker[3]
             self.hitmarker_list.add(marker)
+
+        # for enemy in enemyList:
+        #     enemy1 = enemyclass.Enemy(enemy[0], enemy[1])
+        #     enemy1.rect.x = enemy[2]
+        #     enemy1.rect.y = enemy[3]
+        #     self.enemy_list.add(enemy1)
