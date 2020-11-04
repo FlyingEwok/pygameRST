@@ -26,7 +26,7 @@ class Enemy(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
  
         # Set speed vector of enemy
-        self.change_x = 0
+        self.change_x = 3
         self.change_y = 0
  
         # List of sprites we can bump against

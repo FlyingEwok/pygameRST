@@ -31,7 +31,7 @@ class Level_01(levelclass.Level):
 
         enemyList = [
                 [1, 1, 800, 520],
-                [1, 1, 666, 100]
+                [1, 1, 666, 550]
                 ]
  
         # Go through the array above and add platforms
@@ -48,8 +48,9 @@ class Level_01(levelclass.Level):
             marker.rect.y = hitmarker[3]
             self.hitmarker_list.add(marker)
 
-        # for enemy in enemyList:
-        #     enemy1 = enemyclass.Enemy(enemy[0], enemy[1])
-        #     enemy1.rect.x = enemy[2]
-        #     enemy1.rect.y = enemy[3]
-        #     self.enemy_list.add(enemy1)
+        for enemy in enemyList:
+            enemy1 = enemyclass.Enemy()
+            enemy1.level = self
+            enemy1.rect.x = enemy[2]
+            enemy1.rect.y = enemy[3]
+            self.enemy_list.add(enemy1)
