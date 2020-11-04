@@ -99,6 +99,6 @@ class Level():
         for enemy in enemyList:
             enemy1 = enemyclass.Enemy()
             enemy1.level = self
-            enemy1.rect.x = enemy[2]
-            enemy1.rect.y = enemy[3]
+            enemy1.rect.x = enemy[0]
+            enemy1.rect.y = enemy[1]
             self.enemy_list.add(enemy1)

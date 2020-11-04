@@ -34,8 +34,8 @@ class Level_01(levelclass.Level):
                  ]
 
         self.enemyList = [
-                [1, 1, 800, 520],
-                [1, 1, 666, 550]
+                [800, 520],
+                [666, 550]
                 ]
  
         self.addPlatforms(self.levelPlatform)
