@@ -11,6 +11,7 @@ SCREEN_HEIGHT = 720
  
 def main():
     """ Main Program """
+    # pylint: disable=no-member
     pygame.init()
  
     # Set the height and width of the screen
