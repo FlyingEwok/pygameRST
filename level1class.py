@@ -2,6 +2,7 @@ import levelclass
 import platformclass
 import invisablehitmarkerclass
 import enemyclass
+import pygame
 
 # Create platforms for the level
 class Level_01(levelclass.Level):
@@ -14,6 +15,11 @@ class Level_01(levelclass.Level):
         levelclass.Level.__init__(self, player)
  
         self.level_limit = -1000
+        screenHeight = pygame.display.get_surface().get_size()[1]
+
+        # Place player
+        player.rect.x = 340
+        player.rect.y = screenHeight - player.rect.height
  
         # Array with width, height, x, and y of platform
         levelPlatform =[
@@ -34,23 +40,8 @@ class Level_01(levelclass.Level):
                 [1, 1, 666, 550]
                 ]
  
-        # Go through the array above and add platforms
-        for platform in levelPlatform:
-            block = platformclass.Platform(platform[0], platform[1])
-            block.rect.x = platform[2]
-            block.rect.y = platform[3]
-            block.player = self.player
-            self.platform_list.add(block)
+        self.addPlatforms(levelPlatform)
+        self.addHitmarker(levelHitMarker)
+        self.addEnemy(enemyList)
 
-        for hitmarker in levelHitMarker:
-            marker = invisablehitmarkerclass.HitMarker(hitmarker[0], hitmarker[1])
-            marker.rect.x = hitmarker[2]
-            marker.rect.y = hitmarker[3]
-            self.hitmarker_list.add(marker)
-
-        for enemy in enemyList:
-            enemy1 = enemyclass.Enemy()
-            enemy1.level = self
-            enemy1.rect.x = enemy[2]
-            enemy1.rect.y = enemy[3]
-            self.enemy_list.add(enemy1)
+        

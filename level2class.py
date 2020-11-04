@@ -20,10 +20,4 @@ class Level_02(levelclass.Level):
                  [210, 30, 1120, 280],
                  ]
  
-        # Go through the array above and add platforms
-        for platform in level:
-            block = platformclass.Platform(platform[0], platform[1])
-            block.rect.x = platform[2]
-            block.rect.y = platform[3]
-            block.player = self.player
-            self.platform_list.add(block)
+        self.addPlatforms(level)

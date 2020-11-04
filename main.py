@@ -21,7 +21,6 @@ def main():
  
     # Create the player
     player = playerclass.Player()
-    enemy = enemyclass.Enemy()
  
     # Create all the levels
     level_list = []
@@ -32,13 +31,9 @@ def main():
     current_level_no = 0
     current_level = level_list[current_level_no]
  
-    active_sprite_list = pygame.sprite.Group()
     player.level = current_level
-    enemy.level = current_level
  
-    player.rect.x = 340
-    player.rect.y = SCREEN_HEIGHT - player.rect.height
-    active_sprite_list.add(player)
+
     
  
     # Loop until the user clicks the close button.
@@ -67,8 +62,6 @@ def main():
                 if event.key == pygame.K_RIGHT and player.change_x > 0:
                     player.stop()
  
-        # Update the player.
-        active_sprite_list.update()
  
         # Update items in the level
         current_level.update()
@@ -96,7 +89,6 @@ def main():
  
         # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
         current_level.draw(screen)
-        active_sprite_list.draw(screen)
  
         # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
  

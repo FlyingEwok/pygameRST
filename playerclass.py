@@ -66,6 +66,14 @@ class Player(pygame.sprite.Sprite):
  
             # Stop our vertical movement
             self.change_y = 0
+
+        # Enemy collision detection 
+        enemy_hit_list = pygame.sprite.spritecollide(self, self.level.enemy_list, False)
+        for enemy in enemy_hit_list:
+            if self.change_y > 0:
+                enemy.destroy()
+            else:
+                self.die()            
  
     def calc_grav(self):
         """ Calculate effect of gravity. """
@@ -92,6 +100,9 @@ class Player(pygame.sprite.Sprite):
         # If it is ok to jump, set our speed upwards
         if len(platform_hit_list) > 0 or self.rect.bottom >= main.SCREEN_HEIGHT:
             self.change_y = -10
+
+    def die(self):
+        self.level.player_list.remove(self)
  
     # Player-controlled movement:
     def go_left(self):

@@ -100,4 +100,7 @@ class Enemy(pygame.sprite.Sprite):
         # If it is ok to jump, set our speed upwards
         if len(platform_hit_list) > 0 or self.rect.bottom >= main.SCREEN_HEIGHT:
             self.change_y = -10
+
+    def destroy(self):
+        self.level.enemy_list.remove(self)
  
