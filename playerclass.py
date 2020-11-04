@@ -102,7 +102,7 @@ class Player(pygame.sprite.Sprite):
             self.change_y = -10
 
     def die(self):
-        self.level.player_list.remove(self)
+        self.level.reset()
  
     # Player-controlled movement:
     def go_left(self):
