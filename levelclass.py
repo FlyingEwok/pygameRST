@@ -52,7 +52,7 @@ class Level():
  
         # Draw the background
         # screen.fill(rgbColours.BLUE)
-        background = pygame.image.load('images/Test-Background.png')
+        background = pygame.image.load('images/SpaceBackground.png')
         screen.blit(background, (self.world_shift, 0))
  
         # Draw all the sprite lists that we have

@@ -90,6 +90,7 @@ def main():
                 current_level = level_list[current_level_no]
                 player.level = current_level
  
+        # If player goes to the left end of the level, stop movement
         if current_position > current_level.level_start:
             player.change_x = 0
             player.rect.x = 341
