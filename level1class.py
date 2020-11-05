@@ -47,7 +47,7 @@ class Level_01(levelclass.Level):
  
         # Call the parent constructor
         levelclass.Level.__init__(self, player)
-        self.level_limit = -1000
+        self.level_limit = -3840
         
 
         

@@ -79,8 +79,7 @@ class Level():
             enemy.rect.x += shift_x
 
     def addPlatforms(self, levelPlatform):
-        # Go through the array above and add platforms
-        
+        # Go through the array above and add platforms        
         for platform in levelPlatform:
             block = platformclass.Platform(platform[0], platform[1])
             block.rect.x = platform[2]
