@@ -18,7 +18,9 @@ def main():
     size = [SCREEN_WIDTH, SCREEN_HEIGHT]
     screen = pygame.display.set_mode(size)
  
-    pygame.display.set_caption("Side-scrolling Platformer")
+    pygame.display.set_caption("Escape The Space Station!")
+    icon = pygame.image.load('images/astronaut.png')
+    pygame.display.set_icon(icon)
  
     # Create the player
     player = playerclass.Player()
