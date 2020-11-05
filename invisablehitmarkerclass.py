@@ -1,6 +1,7 @@
 import pygame
 import rgbColours
 
+# Hitmarker for enemy to collide with to change directions
 class HitMarker(pygame.sprite.Sprite):
     """ Platform the user can jump on """
  

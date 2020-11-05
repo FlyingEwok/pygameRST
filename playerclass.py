@@ -14,13 +14,8 @@ class Player(pygame.sprite.Sprite):
         # Call the parent's constructor
         super().__init__()
  
-        # Create an image of the block, and fill it with a color.
-        # This could also be an image loaded from the disk.
-        width = 40
-        height = 60
+        # Sprite for the character
         self.image = pygame.image.load('images/astronaut.png')
-        # self.image = pygame.Surface([width, height])
-        # self.image.fill(rgbColours.RED)
  
         # Set a referance to the image rect.
         self.rect = self.image.get_rect()
