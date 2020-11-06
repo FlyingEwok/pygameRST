@@ -83,13 +83,13 @@ def main():
             current_level.shift_world(diff)
  
         # If the player gets to the end of the level, go to the next level
-        current_position = player.rect.x + current_level.world_shift
-        if current_position < current_level.level_limit:
-            #player.rect.x = 120
+        current_position = player.rect.x
+        if current_position > current_level.screenWidth:
             if current_level_no < len(level_list)-1:
                 current_level_no += 1
                 current_level = level_list[current_level_no]
                 player.level = current_level
+                current_level.reset()
  
 
         # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
@@ -98,7 +98,7 @@ def main():
         # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
  
         # Limit to 75 frames per second
-        clock.tick(75)
+        clock.tick(60)
  
         # Go ahead and update the screen with what we've drawn.
         pygame.display.flip()

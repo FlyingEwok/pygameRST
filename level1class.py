@@ -9,11 +9,18 @@ class Level_01(levelclass.Level):
     """ Definition for level 1. """
     
     def create(self):        
+        # Call the base class create function
         super(Level_01, self).create()
 
-        # Place player
-        self.player.rect.x = 340
-        self.player.rect.y = self.screenHeight - self.player.rect.height
+        # Players x and y position
+        playerStartX = 340
+        playerStartY = self.screenHeight - self.player.rect.height
+
+        # place player
+        self.placePlayer(playerStartX, playerStartY)
+
+        # Create background
+        self.background = pygame.image.load('images/SpaceBackground.png')
  
         # Array with width, height, x, and y of platform
         self.levelPlatform =[
@@ -44,8 +51,7 @@ class Level_01(levelclass.Level):
  
         # Call the parent constructor
         levelclass.Level.__init__(self, player)
-        self.background = pygame.image.load('images/SpaceBackground.png')
-        self.level_limit = -3840
+        
         
 
         
