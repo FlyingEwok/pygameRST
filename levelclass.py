@@ -19,7 +19,7 @@ class Level():
         self.player_list.add(self.player)
         self.screenHeight = pygame.display.get_surface().get_size()[1]
         self.screenWidth = pygame.display.get_surface().get_size()[0]
-        self.background = pygame.image.load('images/SpaceBackground.png')
+        self.background = None #pygame.image.load('images/SpaceBackground.png')
  
         # How far this world has been scrolled left/right
         self.world_shift = 0

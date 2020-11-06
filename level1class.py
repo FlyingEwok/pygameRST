@@ -8,9 +8,7 @@ import pygame
 class Level_01(levelclass.Level):
     """ Definition for level 1. """
     
-    def create(self):
-        print("Level 1 create")
-
+    def create(self):        
         super(Level_01, self).create()
 
         # Place player
@@ -19,7 +17,7 @@ class Level_01(levelclass.Level):
  
         # Array with width, height, x, and y of platform
         self.levelPlatform =[
-                 [1, 720, 0, 0],
+                 [2, 720, 0, 0],
                  [210, 20, 500, 520],
                  [210, 20, 800, 440],
                  [210, 20, 1000, 560],
@@ -46,8 +44,8 @@ class Level_01(levelclass.Level):
  
         # Call the parent constructor
         levelclass.Level.__init__(self, player)
+        self.background = pygame.image.load('images/SpaceBackground.png')
         self.level_limit = -3840
-        self.level_start = 675
         
 
         
