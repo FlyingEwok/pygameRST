@@ -8,6 +8,7 @@ class Level():
     """ This is a generic super-class used to define a level.
         Create a child class for each level with level-specific
         info. """
+
     def create(self):
         """ Constructor. Pass in a handle to player. Needed for when moving
         platforms collide with the player. """
@@ -16,6 +17,9 @@ class Level():
         self.enemy_list = pygame.sprite.Group()
         self.player_list = pygame.sprite.Group()        
         self.player_list.add(self.player)
+        self.screenHeight = pygame.display.get_surface().get_size()[1]
+        self.screenWidth = pygame.display.get_surface().get_size()[0]
+        self.background = pygame.image.load('images/SpaceBackground.png')
  
         # How far this world has been scrolled left/right
         self.world_shift = 0
@@ -52,8 +56,7 @@ class Level():
  
         # Draw the background
         # screen.fill(rgbColours.BLUE)
-        background = pygame.image.load('images/SpaceBackground.png')
-        screen.blit(background, (self.world_shift, 0))
+        screen.blit(self.background, (self.world_shift, 0))
  
         # Draw all the sprite lists that we have
         self.platform_list.draw(screen)
@@ -64,19 +67,36 @@ class Level():
     def shift_world(self, shift_x):
         """ When the user moves left/right and we need to scroll
         everything: """
- 
-        # Keep track of the shift amount
-        self.world_shift += shift_x
- 
-        # Go through all the sprite lists and shift
-        for platform in self.platform_list:
-            platform.rect.x += shift_x
 
-        for marker in self.hitmarker_list:
-            marker.rect.x += shift_x
- 
-        for enemy in self.enemy_list:
-            enemy.rect.x += shift_x
+        backgroundWidth = self.background.get_width()
+
+        if (self.world_shift + shift_x) > 0:
+            self.world_shift = 0
+            shift_x = 0
+
+        if self.world_shift < -1*(backgroundWidth - self.screenWidth):
+            self.world_shift = -1*(backgroundWidth - self.screenWidth)
+
+        print(f"player x: { self.player.rect.x }")
+        print(f"shift x: { shift_x }")
+        print(f"world shift x: { self.world_shift }")
+
+        if self.world_shift <= 0 and self.world_shift >= -1*(backgroundWidth - self.screenWidth):
+            # Keep track of the shift amount
+            self.world_shift += shift_x 
+            
+            print(f"World shift: {self.world_shift}")
+            print(f"background: { backgroundWidth - self.screenWidth }")
+
+            # Go through all the sprite lists and shift
+            for platform in self.platform_list:
+                platform.rect.x += shift_x
+
+            for marker in self.hitmarker_list:
+                marker.rect.x += shift_x
+
+            for enemy in self.enemy_list:
+                enemy.rect.x += shift_x
 
     def addPlatforms(self, levelPlatform):
         # Go through the array above and add platforms        

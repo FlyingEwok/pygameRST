@@ -13,11 +13,9 @@ class Level_01(levelclass.Level):
 
         super(Level_01, self).create()
 
-        screenHeight = pygame.display.get_surface().get_size()[1]
-
         # Place player
         self.player.rect.x = 340
-        self.player.rect.y = screenHeight - self.player.rect.height
+        self.player.rect.y = self.screenHeight - self.player.rect.height
  
         # Array with width, height, x, and y of platform
         self.levelPlatform =[
