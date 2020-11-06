@@ -70,23 +70,19 @@ class Level():
 
         backgroundWidth = self.background.get_width()
 
+        # prevents screen from scrolling to the left
         if (self.world_shift + shift_x) > 0:
             self.world_shift = 0
             shift_x = 0
 
+        # Prevents screen from scrolling past the background width on the right
         if self.world_shift < -1*(backgroundWidth - self.screenWidth):
             self.world_shift = -1*(backgroundWidth - self.screenWidth)
 
-        print(f"player x: { self.player.rect.x }")
-        print(f"shift x: { shift_x }")
-        print(f"world shift x: { self.world_shift }")
-
+        # Prevents from updating the postion of the items
         if self.world_shift <= 0 and self.world_shift >= -1*(backgroundWidth - self.screenWidth):
             # Keep track of the shift amount
             self.world_shift += shift_x 
-            
-            print(f"World shift: {self.world_shift}")
-            print(f"background: { backgroundWidth - self.screenWidth }")
 
             # Go through all the sprite lists and shift
             for platform in self.platform_list:

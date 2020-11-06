@@ -70,13 +70,13 @@ def main():
         # Update items in the level
         current_level.update()
 
-        # If the player gets near the right side, shift the world left (-x)
+        # fix player to specific part of screen while moving right, shift the world left (-x)
         if current_level.world_shift > -1*(current_level.background.get_width() - current_level.screenWidth) and player.rect.right >= 380:
             diff = player.rect.right - 380
             player.rect.right = 380
             current_level.shift_world(-diff)
 
-        # If the player gets near the left side, shift the world right (+x)
+        # fix player to specific part of screen while moving left, shift the world right (+x)
         if current_level.world_shift < 0 and player.rect.left <= 340:
             diff = 340 - player.rect.left
             player.rect.left = 340
