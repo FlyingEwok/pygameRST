@@ -19,6 +19,7 @@ class Level_01(levelclass.Level):
  
         # Array with width, height, x, and y of platform
         self.levelPlatform =[
+                 [1, 720, 0, 0],
                  [210, 20, 500, 520],
                  [210, 20, 800, 440],
                  [210, 20, 1000, 560],
