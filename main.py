@@ -36,9 +36,7 @@ def main():
     current_level = level_list[current_level_no]
  
     player.level = current_level
- 
-
-    
+  
  
     # Loop until the user clicks the close button.
     done = False

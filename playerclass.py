@@ -51,6 +51,11 @@ class Player(pygame.sprite.Sprite):
  
         # Check and see if we hit anything
         block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
+        block_hit_list1 = pygame.sprite.spritecollide(self, self.level.floor_list, False)
+        
+        for x in block_hit_list1:
+            block_hit_list.append(x)
+
         for block in block_hit_list:
  
             # Reset our position based on the top/bottom of the object.
@@ -89,11 +94,19 @@ class Player(pygame.sprite.Sprite):
         # Move down 2 pixels because it doesn't work well if we only move down 1
         # when working with a platform moving down.
         self.rect.y += 2
-        platform_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
+        #platform_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
+        
+        
+        block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
+        block_hit_list1 = pygame.sprite.spritecollide(self, self.level.floor_list, False)
+        
+        for x in block_hit_list1:
+            block_hit_list.append(x)
+
         self.rect.y -= 2
- 
+
         # If it is ok to jump, set our speed upwards
-        if len(platform_hit_list) > 0 or self.rect.bottom >= main.SCREEN_HEIGHT:
+        if len(block_hit_list) > 0 or self.rect.bottom >= main.SCREEN_HEIGHT:
             self.change_y = -10
 
     def die(self):

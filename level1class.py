@@ -14,13 +14,13 @@ class Level_01(levelclass.Level):
 
         # Players x and y position
         playerStartX = 340
-        playerStartY = self.screenHeight - self.player.rect.height
+        playerStartY = 570
 
         # place player
         self.placePlayer(playerStartX, playerStartY)
 
         # Create background
-        self.background = pygame.image.load('images/SpaceBackground.png')
+        self.background = pygame.image.load('images/SpaceBackgroundWithGlass.png')
  
         # Array with width, height, x, and y of platform
         self.levelPlatform =[
@@ -37,6 +37,10 @@ class Level_01(levelclass.Level):
                  [1, 140, 709, 380]
                  ]
 
+        self.levelFloor = [
+                 [3840, 20, 0, 581]
+                 ]
+
         self.enemyList = [
                 [800, 500],
                 [666, 500]
@@ -44,6 +48,7 @@ class Level_01(levelclass.Level):
  
         self.addPlatforms(self.levelPlatform)
         self.addHitmarker(self.levelHitMarker)
+        self.addFloor(self.levelFloor)
         self.addEnemy(self.enemyList)
 
     def __init__(self, player):

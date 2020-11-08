@@ -17,10 +17,11 @@ class Enemy(pygame.sprite.Sprite):
  
         # Create an image of the block, and fill it with a color.
         # This could also be an image loaded from the disk.
-        width = 40
-        height = 40
-        self.image = pygame.Surface([width, height])
-        self.image.fill(rgbColours.GREEN)
+        # width = 40
+        # height = 40
+        # self.image = pygame.Surface([width, height])
+        # self.image.fill(rgbColours.GREEN)
+        self.image = pygame.image.load('images/RobotEnemy1.png')
  
         # Set a referance to the image rect.
         self.rect = self.image.get_rect()
@@ -52,9 +53,10 @@ class Enemy(pygame.sprite.Sprite):
 
         for block in block_hit_list: 
             # If we are moving right,
-            # set our right side to the left side of the item we hit
+            # change movement direction to left
             if self.change_x > 0:
                 self.change_x = -2
+                self.rect.x -= 1
             elif self.change_x < 0:
                 # Otherwise if we are moving left, do the opposite.
                 self.change_x = 2
@@ -64,6 +66,11 @@ class Enemy(pygame.sprite.Sprite):
  
         # Check and see if we hit anything
         block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
+        block_hit_list1 = pygame.sprite.spritecollide(self, self.level.floor_list, False)
+        
+        for x in block_hit_list1:
+            block_hit_list.append(x)
+            
         for block in block_hit_list:
  
             # Reset our position based on the top/bottom of the object.

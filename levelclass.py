@@ -3,6 +3,7 @@ import rgbColours
 import enemyclass
 import platformclass
 import invisablehitmarkerclass
+import invisableFloor
 
 class Level():
     """ This is a generic super-class used to define a level.
@@ -14,6 +15,7 @@ class Level():
         platforms collide with the player. """
         self.platform_list = pygame.sprite.Group()
         self.hitmarker_list = pygame.sprite.Group()
+        self.floor_list = pygame.sprite.Group()
         self.enemy_list = pygame.sprite.Group()
         self.player_list = pygame.sprite.Group()        
         self.player_list.add(self.player)
@@ -28,6 +30,8 @@ class Level():
             self.platform_list.remove(platform)
         for hitmarker in self.hitmarker_list:
             self.hitmarker_list.remove(hitmarker)
+        for floor in self.floor_list:
+            self.floor_list.remove(floor)
         for enemy in self.enemy_list:
             self.enemy_list.remove(enemy)
         for player in self.player_list:
@@ -47,6 +51,7 @@ class Level():
         """ Update everything in this level."""
         self.platform_list.update()
         self.hitmarker_list.update()
+        self.floor_list.update()
         self.enemy_list.update()
         self.player_list.update()
  
@@ -60,6 +65,7 @@ class Level():
         # Draw all the sprite lists that we have
         self.platform_list.draw(screen)
         self.hitmarker_list.draw(screen)
+        self.floor_list.draw(screen)
         self.enemy_list.draw(screen)
         self.player_list.draw(screen)
  
@@ -90,11 +96,14 @@ class Level():
             for marker in self.hitmarker_list:
                 marker.rect.x += shift_x
 
+            for floor in self.floor_list:
+                floor.rect.x += shift_x
+
             for enemy in self.enemy_list:
                 enemy.rect.x += shift_x
 
     def addPlatforms(self, levelPlatform):
-        # Go through the array above and add platforms        
+        # Go through the array above and add objects        
         for platform in levelPlatform:
             block = platformclass.Platform(platform[0], platform[1])
             block.rect.x = platform[2]
@@ -116,6 +125,14 @@ class Level():
             enemy1.rect.x = enemy[0]
             enemy1.rect.y = enemy[1]
             self.enemy_list.add(enemy1)
+
+    def addFloor(self, levelFloor):
+        for floor in levelFloor:
+            block = invisableFloor.Floor(floor[0], floor[1])
+            block.rect.x = floor[2]
+            block.rect.y = floor[3]
+            block.player = self.player
+            self.floor_list.add(block)
 
     def placePlayer(self, x, y):
         # Place player

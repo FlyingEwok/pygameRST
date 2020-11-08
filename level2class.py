@@ -13,7 +13,7 @@ class Level_02(levelclass.Level):
 
         ## Players x and y position
         playerStartX = 340
-        playerStartY = self.screenHeight - self.player.rect.height
+        playerStartY = 570
 
         # place player
         self.placePlayer(playerStartX, playerStartY)
