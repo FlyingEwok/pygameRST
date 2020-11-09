@@ -31,8 +31,8 @@ class Level_01(levelclass.Level):
                  [420, 20, 1570, 330],
                  [20, 150, 1990, 200],
                  [210, 20, 2500, 440],
-                 [210, 20, 3000, 120],
-                 [210,20, 3400, 260]
+                 [210, 20, 2900, 100],
+                 [210,20, 3200, 220]
                  ]
 
         self.levelHitMarker = [
@@ -47,7 +47,8 @@ class Level_01(levelclass.Level):
                  ]
 
         self.levelFloor = [
-                 [3840, 20, 0, 581]
+                 [self.getBackgroundWidth(), 20, 0, 581],
+                 [self.getBackgroundWidth(), 20, 0, -20]
                  ]
 
         self.enemyList = [
@@ -82,7 +83,8 @@ class Level_01(levelclass.Level):
                 ]
 
         self.levelGravitySwitch = [
-                [10, 10, 2670, 430]
+                [10, 10, 2670, 430],
+                [10, 10, 3400, 240]
 
                 ]
  

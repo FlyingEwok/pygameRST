@@ -79,7 +79,7 @@ class Level():
         """ When the user moves left/right and we need to scroll
         everything: """
 
-        backgroundWidth = self.background.get_width()
+        backgroundWidth = self.getBackgroundWidth()
 
         # prevents screen from scrolling to the left
         if (self.world_shift + shift_x) > 0:
@@ -155,3 +155,6 @@ class Level():
         # Place player
         self.player.rect.x = x
         self.player.rect.y = y
+
+    def getBackgroundWidth(self):
+        return self.background.get_width()

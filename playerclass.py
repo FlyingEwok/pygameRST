@@ -23,6 +23,11 @@ class Player(pygame.sprite.Sprite):
         # Set speed vector of player
         self.change_x = 0
         self.change_y = 0
+
+        # Set inverted gravity variable
+        self.invertedGravity = False
+
+        self.isOnSwitch = False 
  
         # List of sprites we can bump against
         self.level = None
@@ -67,6 +72,29 @@ class Player(pygame.sprite.Sprite):
             # Stop our vertical movement
             self.change_y = 0
 
+        switchHit = pygame.sprite.spritecollide(self, self.level.gravitySwitch_list, False)
+        if not self.isOnSwitch:
+            for switch in switchHit:
+                self.isOnSwitch = True
+                if not self.invertedGravity:
+                    if self.change_y > 0:
+                        self.rect.bottom = switch.rect.top
+                        self.invertedGravity = True
+                        # invert player sprite here
+                        for aswitch in self.level.gravitySwitch_list:
+                            aswitch.image.fill(rgbColours.RED)
+                else:
+                    if self.change_y < 0:
+                        self.rect.top = switch.rect.bottom
+                        self.invertedGravity = False
+                        # invert player sprite here
+                        for aswitch in self.level.gravitySwitch_list:
+                            aswitch.image.fill(rgbColours.GREEN)
+
+        if len(switchHit) == 0 and self.isOnSwitch:
+            self.isOnSwitch = False
+        print(self.isOnSwitch)
+
         # Enemy collision detection 
         enemy_hit_list = pygame.sprite.spritecollide(self, self.level.enemy_list, False)
         for enemy in enemy_hit_list:
@@ -76,38 +104,62 @@ class Player(pygame.sprite.Sprite):
                 self.die()            
  
     def calc_grav(self):        
-        """ Calculate effect of gravity. """
-        if self.change_y == 0:
-            self.change_y = 1
+        if not self.invertedGravity:
+            """ Calculate effect of gravity. """
+            if self.change_y == 0:
+                self.change_y = 1
+            else:
+                self.change_y += 0.35      # Default gravity = 0.35, High gravity = 0.55, Lowest gravity = 
+    
+            # See if we are on the ground.
+            if self.rect.y >= main.SCREEN_HEIGHT - self.rect.height and self.change_y >= 0:
+                self.change_y = 0
+                self.rect.y = main.SCREEN_HEIGHT - self.rect.height
         else:
-            self.change_y += 0.35      # Default gravity = 0.35, High gravity = 0.55, Lowest gravity = 
- 
-        # See if we are on the ground.
-        if self.rect.y >= main.SCREEN_HEIGHT - self.rect.height and self.change_y >= 0:
-            self.change_y = 0
-            self.rect.y = main.SCREEN_HEIGHT - self.rect.height
+            """ Calculate effect of gravity. """
+            if self.change_y == 0:
+                self.change_y = -1
+            else:
+                self.change_y -= 0.35      # Default gravity = 0.35, High gravity = 0.55, Lowest gravity = 
+    
+            # See if we are on the ground.
+            if self.rect.y >= main.SCREEN_HEIGHT - self.rect.height and self.change_y >= 0:
+                self.change_y = 0
+                self.rect.y = main.SCREEN_HEIGHT - self.rect.height
  
     def jump(self):
         """ Called when user hits 'jump' button. """
- 
-        # move down a bit and see if there is a platform below us.
-        # Move down 2 pixels because it doesn't work well if we only move down 1
-        # when working with a platform moving down.
-        self.rect.y += 2
-        #platform_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
-        
-        
-        block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
-        block_hit_list1 = pygame.sprite.spritecollide(self, self.level.floor_list, False)
-        
-        for x in block_hit_list1:
-            block_hit_list.append(x)
+        if not self.invertedGravity:
+            # move down a bit and see if there is a platform below us.
+            # Move down 2 pixels because it doesn't work well if we only move down 1
+            # when working with a platform moving down.
+            self.rect.y += 2        
+            
+            block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
+            block_hit_list1 = pygame.sprite.spritecollide(self, self.level.floor_list, False)
+            
+            for x in block_hit_list1:
+                block_hit_list.append(x)
 
-        self.rect.y -= 2
+            self.rect.y -= 2
 
-        # If it is ok to jump, set our speed upwards
-        if len(block_hit_list) > 0 or self.rect.bottom >= main.SCREEN_HEIGHT:
-            self.change_y = -10
+            # If it is ok to jump, set our speed upwards
+            if len(block_hit_list) > 0 or self.rect.bottom >= main.SCREEN_HEIGHT:
+                self.change_y = -10
+        else:
+            self.rect.y -= 2        
+            
+            block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
+            block_hit_list1 = pygame.sprite.spritecollide(self, self.level.floor_list, False)
+            
+            for x in block_hit_list1:
+                block_hit_list.append(x)
+
+            self.rect.y += 2
+
+            # If it is ok to jump, set our speed upwards
+            if len(block_hit_list) > 0 or self.rect.top >= main.SCREEN_HEIGHT:
+                self.change_y = 10
 
     def die(self):
         self.level.reset()
