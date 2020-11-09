@@ -178,10 +178,18 @@ class Player(pygame.sprite.Sprite):
     def go_left(self):
         """ Called when the user hits the left arrow. """
         self.change_x = -6
+        if self.invertedGravity == True:
+            self.image = pygame.image.load('images/astronaut_Upsidedown_left.png')
+        else:
+            self.image = pygame.image.load('images/astronaut_left.png')
  
     def go_right(self):
         """ Called when the user hits the right arrow. """
         self.change_x = 6
+        if self.invertedGravity == True:
+            self.image = pygame.image.load('images/astronaut_Upsidedown.png')
+        else:
+            self.image = pygame.image.load('images/astronaut.png')
  
     def stop(self):
         """ Called when the user lets off the keyboard. """
