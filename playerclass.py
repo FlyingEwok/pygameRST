@@ -90,6 +90,7 @@ class Player(pygame.sprite.Sprite):
                         # invert player sprite here
                         for aswitch in self.level.gravitySwitch_list:
                             aswitch.image.fill(rgbColours.RED)
+                        self.image = pygame.image.load('images/astronaut_Upsidedown.png')
                 else:
                     if self.change_y < 0 or self.change_x != 0:
                         self.rect.top = switch.rect.bottom
@@ -97,6 +98,8 @@ class Player(pygame.sprite.Sprite):
                         # invert player sprite here
                         for aswitch in self.level.gravitySwitch_list:
                             aswitch.image.fill(rgbColours.GREEN)
+                        self.image = pygame.image.load('images/astronaut.png')
+                        
 
         # Disable the flag once a switch is no longer in contact with the player
         if len(switchHit) == 0 and self.isOnSwitch:
