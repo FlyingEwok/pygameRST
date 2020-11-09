@@ -8,7 +8,7 @@ import rgbColours
 
 # Intialization
 pygame.init()
-pygame.display.set_caption("Escape The Space Station!")
+pygame.display.set_caption("Escape The Space Station")
 icon = pygame.image.load('images/astronaut.png')
 pygame.display.set_icon(icon)
 surface = pygame.display.set_mode((1280, 720))
@@ -43,7 +43,7 @@ menu.add_image("images/RobotEnemy1.png", scale=(3, 3))
 menu.add_button('Play', start_the_game)
 menu.add_button('SuperPlay', start_the_game)
 menu.add_button('Please Click Me', start_the_game)
-menu.add_button('Free Pizza!', start_the_game)
+menu.add_button('Free Pizza', start_the_game)
 menu.add_button('Quit', pygame_menu.events.EXIT)
 
 menu.add_image("images/astronaut.png", scale=(3, 3))
