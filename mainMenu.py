@@ -8,7 +8,7 @@ import rgbColours
 
 # Intialization
 pygame.init()
-pygame.display.set_caption("Escape The Space Station!")
+pygame.display.set_caption("Escape From Genesis Station!")
 icon = pygame.image.load('images/astronaut.png')
 pygame.display.set_icon(icon)
 surface = pygame.display.set_mode((1280, 720))
@@ -35,7 +35,7 @@ mytheme.widget_font = pygame_menu.font.FONT_8BIT
 mytheme.widget_font_color = rgbColours.CYAN
 
 # Create menu
-menu = pygame_menu.Menu(720, 1280, 'Escape The Space Station', theme=mytheme)
+menu = pygame_menu.Menu(720, 1280, 'Escape From Genesis Station', theme=mytheme)
 
 # Add buttons and images
 menu.add_image("images/RobotEnemy1.png", scale=(3, 3))

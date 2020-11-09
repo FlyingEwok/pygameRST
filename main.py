@@ -19,7 +19,7 @@ def main():
     size = [SCREEN_WIDTH, SCREEN_HEIGHT]
     screen = pygame.display.set_mode(size)
  
-    pygame.display.set_caption("Escape The Space Station!")
+    pygame.display.set_caption("Escape From Genesis Station!")
     icon = pygame.image.load('images/astronaut.png')
     pygame.display.set_icon(icon)
  
