@@ -6,12 +6,12 @@ This game uses Python, to setup the requirements run,
 
 Linux:
 ```bash
-pip3 install -r requirmentsLinux.txt
+pip3 install -r requirementsLinux.txt
 ```
 
 Windows:
 ```bash
-pip3 install -r requirmentsWindows.txt
+pip3 install -r requirementsWindows.txt
 ```
 
 ## Game Play
