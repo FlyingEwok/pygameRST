@@ -42,6 +42,11 @@ class Player(pygame.sprite.Sprite):
  
         # See if we hit anything
         block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
+        block_hit_list1 = pygame.sprite.spritecollide(self, self.level.gateway_list, False)
+        
+        for x in block_hit_list1:
+            block_hit_list.append(x)
+
         for block in block_hit_list:
             # If we are moving right,
             # set our right side to the left side of the item we hit

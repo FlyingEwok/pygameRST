@@ -87,10 +87,15 @@ class Level_01(levelclass.Level):
                 [10, 10, 3400, 240]
 
                 ]
+
+        self.levelGateway = [
+                [60, self.screenHeight, self.getBackgroundWidth(), 0]
+        ]
  
         self.addPlatforms(self.levelPlatform)
         self.addHitmarker(self.levelHitMarker)
         self.addFloor(self.levelFloor)
+        self.addGateway(self.levelGateway)
         self.addEnemy(self.enemyList)
         self.addSwitch(self.levelGravitySwitch)
 
