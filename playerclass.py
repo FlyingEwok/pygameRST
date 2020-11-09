@@ -78,25 +78,27 @@ class Player(pygame.sprite.Sprite):
             self.change_y = 0
 
         switchHit = pygame.sprite.spritecollide(self, self.level.gravitySwitch_list, False)
+        # Detect if player is in constant contact with a switch and prevent it from spamming
         if not self.isOnSwitch:
             for switch in switchHit:
+                # Flag that the player is currently in contact with a switch
                 self.isOnSwitch = True
                 if not self.invertedGravity:
-                    if self.change_y > 0:
+                    if self.change_y > 0 or self.change_x != 0:
                         self.rect.bottom = switch.rect.top
                         self.invertedGravity = True
                         # invert player sprite here
                         for aswitch in self.level.gravitySwitch_list:
                             aswitch.image.fill(rgbColours.RED)
                 else:
-                    if self.change_y < 0:
+                    if self.change_y < 0 or self.change_x != 0:
                         self.rect.top = switch.rect.bottom
                         self.invertedGravity = False
                         # invert player sprite here
                         for aswitch in self.level.gravitySwitch_list:
                             aswitch.image.fill(rgbColours.GREEN)
 
-        # Disable the check once a switch is no longer in contact with the player
+        # Disable the flag once a switch is no longer in contact with the player
         if len(switchHit) == 0 and self.isOnSwitch:
             self.isOnSwitch = False
 
