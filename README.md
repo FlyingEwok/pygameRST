@@ -12,7 +12,7 @@ pip3 install -r requirments.txt
 
 Here is how you play the game...
 
-## The story
+## The Story
 
 Lovely screenshots will go here
 
