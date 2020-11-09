@@ -47,7 +47,7 @@ class Level_01(levelclass.Level):
                  ]
 
         self.levelFloor = [
-                 [self.getBackgroundWidth(), 20, 0, 581],
+                 [self.getBackgroundWidth() + 20, 20, 0, 581],
                  [self.getBackgroundWidth(), 20, 0, -20]
                  ]
 
@@ -93,7 +93,11 @@ class Level_01(levelclass.Level):
                 ]
 
         self.levelKey = [
-                [20, 20, 850, 420]
+                [20, 20, 850, 420],
+                [20, 20, 2450, 560],
+                [20, 20, 1860, 310],
+                [20, 20, 3350, 240],
+                [20, 20, 100, 0]
         ]
  
         self.addPlatforms(self.levelPlatform)
