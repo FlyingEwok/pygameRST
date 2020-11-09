@@ -35,7 +35,7 @@ mytheme.widget_font = pygame_menu.font.FONT_8BIT
 mytheme.widget_font_color = rgbColours.CYAN
 
 # Create menu
-menu = pygame_menu.Menu(720, 1280, 'Escape The Space Station!', theme=mytheme)
+menu = pygame_menu.Menu(720, 1280, 'Escape The Space Station', theme=mytheme)
 
 # Add buttons and images
 menu.add_image("images/RobotEnemy1.png", scale=(3, 3))
@@ -43,7 +43,7 @@ menu.add_image("images/RobotEnemy1.png", scale=(3, 3))
 menu.add_button('Play', start_the_game)
 menu.add_button('SuperPlay', start_the_game)
 menu.add_button('Please Click Me', start_the_game)
-menu.add_button('Free Pizza!', start_the_game)
+menu.add_button('Free Pizza', start_the_game)
 menu.add_button('Quit', pygame_menu.events.EXIT)
 
 menu.add_image("images/astronaut.png", scale=(3, 3))
