@@ -2,7 +2,7 @@ import main
 import mainMenu
 
 # Code for mechanics taken from http://programarcadegames.com/python_examples/show_file.php?file=platform_scroller.py found from reddit user u/pvc https://www.reddit.com/r/learnprogramming/comments/20ejkg/tutorial_on_creating_a_platformer_in_python/
-# Modualized by Nicholas Garth
+# Code for Main Menu taken from https://pygame-menu.readthedocs.io/en/latest/index.html
 
 mainMenu.menu.mainloop(mainMenu.surface)
 
