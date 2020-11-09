@@ -2,7 +2,7 @@ import pygame
 import rgbColours
 
 # floor for player to collide with
-class Gateway(pygame.sprite.Sprite): 
+class Key(pygame.sprite.Sprite): 
     def __init__(self, width, height):
         """ Platform constructor. Assumes constructed with user passing in
             an array of 5 numbers like what's defined at the top of this code.
@@ -10,9 +10,11 @@ class Gateway(pygame.sprite.Sprite):
         super().__init__()
         # pylint: disable=no-member
         self.image = pygame.Surface([width, height], pygame.SRCALPHA)
-        self.image.fill(rgbColours.TRANSPARENT)
+        self.image.fill(rgbColours.BLUE)
         self.rect = self.image.get_rect()
 
     def update(self):
-        if len(self.player.level.key_list) == 0:
-            self.player.level.gateway_list.remove(self)
+        block_hit_list = pygame.sprite.spritecollide(self, self.player.level.player_list, False)
+
+        if len(block_hit_list):
+            self.player.level.key_list.remove(self)

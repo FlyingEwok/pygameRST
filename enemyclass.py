@@ -27,36 +27,39 @@ class Enemy(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
  
         # Set speed vector of enemy
-        self.change_x = 3
+        self.change_x = 2
         self.change_y = 0
  
         # List of sprites we can bump against
         self.level = None
+
+        self.debug = False
+        self.name = None
 
     def update(self):
         """ Move the enemy. """
         # Gravity
         self.calc_grav()
  
-        # Move left/right
-        self.rect.x += self.change_x
+        # Move left/right, advance by two steps to perform hit detection eariler
+        # to avoid enemies intersecting with platforms
+        self.rect.x += self.change_x * 2
         
         
         # See if we hit anything
-        
         block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
         block_hit_list1 = pygame.sprite.spritecollide(self, self.level.hitmarker_list, False)
         
+        self.rect.x -= self.change_x
+
         for x in block_hit_list1:
             block_hit_list.append(x)
-
 
         for block in block_hit_list: 
             # If we are moving right,
             # change movement direction to left
             if self.change_x > 0:
                 self.change_x = -2
-                self.rect.x -= 1
             elif self.change_x < 0:
                 # Otherwise if we are moving left, do the opposite.
                 self.change_x = 2
@@ -77,10 +80,12 @@ class Enemy(pygame.sprite.Sprite):
             if self.change_y > 0:
                 self.rect.bottom = block.rect.top
             elif self.change_y < 0:
-                self.rect.top = block.rect.bottom
+                self.rect.top = block.rect.bottom 
  
             # Stop our vertical movement
             self.change_y = 0
+        
+        self.printDebug()
  
     def calc_grav(self):
         """ Calculate effect of gravity. """
@@ -110,4 +115,11 @@ class Enemy(pygame.sprite.Sprite):
 
     def destroy(self):
         self.level.enemy_list.remove(self)
+    
+    def printDebug(self):
+        if self.debug:
+            (height, width) = (self.image.get_height(), self.image.get_width())
+            self.image = pygame.Surface([width, height], pygame.SRCALPHA)
+            self.image.fill(rgbColours.CYAN)
+            print(f"{self.name} is at x: {self.rect.x} y: {self.rect.y} change_x: {self.change_x} change_y: {self.change_y}")
  

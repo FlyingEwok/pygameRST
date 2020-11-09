@@ -96,9 +96,9 @@ class Player(pygame.sprite.Sprite):
                         for aswitch in self.level.gravitySwitch_list:
                             aswitch.image.fill(rgbColours.GREEN)
 
+        # Disable the check once a switch is no longer in contact with the player
         if len(switchHit) == 0 and self.isOnSwitch:
             self.isOnSwitch = False
-        print(self.isOnSwitch)
 
         # Enemy collision detection 
         enemy_hit_list = pygame.sprite.spritecollide(self, self.level.enemy_list, False)

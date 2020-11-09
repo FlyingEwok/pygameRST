@@ -65,6 +65,7 @@ class Level_01(levelclass.Level):
                 [2350, 580],
                 [2450, 580],
                 [1560, 200],
+                [1560, 200],
                 [1600, 200],
                 [1660, 200],
                 [1700, 200],
@@ -85,17 +86,21 @@ class Level_01(levelclass.Level):
         self.levelGravitySwitch = [
                 [10, 10, 2670, 430],
                 [10, 10, 3400, 240]
-
                 ]
 
         self.levelGateway = [
                 [60, self.screenHeight, self.getBackgroundWidth(), 0]
+                ]
+
+        self.levelKey = [
+                [20, 20, 850, 420]
         ]
  
         self.addPlatforms(self.levelPlatform)
         self.addHitmarker(self.levelHitMarker)
         self.addFloor(self.levelFloor)
         self.addGateway(self.levelGateway)
+        self.addKey(self.levelKey)
         self.addEnemy(self.enemyList)
         self.addSwitch(self.levelGravitySwitch)
 

@@ -6,6 +6,7 @@ import invisablehitmarkerclass
 import invisableFloor
 import gravitySwitch
 import gateway
+import key
 
 class Level():
     """ This is a generic super-class used to define a level.
@@ -20,6 +21,7 @@ class Level():
         self.floor_list = pygame.sprite.Group()
         self.gravitySwitch_list = pygame.sprite.Group()
         self.gateway_list = pygame.sprite.Group()
+        self.key_list = pygame.sprite.Group()
         self.enemy_list = pygame.sprite.Group()
         self.player_list = pygame.sprite.Group()        
         self.player_list.add(self.player)
@@ -40,6 +42,8 @@ class Level():
             self.gravitySwitch_list.remove(switch)
         for gateway in self.gateway_list:
             self.gateway_list.remove(gateway)
+        for key in self.key_list:
+            self.key_list.remove(key)
         for enemy in self.enemy_list:
             self.enemy_list.remove(enemy)
         for player in self.player_list:
@@ -62,6 +66,7 @@ class Level():
         self.floor_list.update()
         self.gravitySwitch_list.update()
         self.gateway_list.update()
+        self.key_list.update()
         self.enemy_list.update()
         self.player_list.update()
  
@@ -78,6 +83,7 @@ class Level():
         self.floor_list.draw(screen)
         self.gravitySwitch_list.draw(screen)
         self.gateway_list.draw(screen)
+        self.key_list.draw(screen)
         self.enemy_list.draw(screen)
         self.player_list.draw(screen)
  
@@ -117,6 +123,9 @@ class Level():
             for gateway in self.gateway_list:
                 gateway.rect.x += shift_x
 
+            for key in self.key_list:
+                key.rect.x += shift_x
+
             for enemy in self.enemy_list:
                 enemy.rect.x += shift_x
 
@@ -142,6 +151,9 @@ class Level():
             enemy1.level = self
             enemy1.rect.x = enemy[0]
             enemy1.rect.y = enemy[1]
+            if len(enemy) > 2:
+                enemy1.name = enemy[2]
+                enemy1.debug = enemy[3]
             self.enemy_list.add(enemy1)
 
     def addFloor(self, levelFloor):
@@ -167,6 +179,14 @@ class Level():
             block.rect.y = gateway1[3]
             block.player = self.player
             self.gateway_list.add(block)
+
+    def addKey(self, levelKey):
+        for key1 in levelKey:
+            block = key.Key(key1[0], key1[1])
+            block.rect.x = key1[2]
+            block.rect.y = key1[3]
+            block.player = self.player
+            self.key_list.add(block)
 
     def placePlayer(self, x, y):
         # Place player
