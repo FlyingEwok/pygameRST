@@ -80,11 +80,17 @@ class Level_01(levelclass.Level):
                 [1121, 300],
                 [2501, 440]
                 ]
+
+        self.levelGravitySwitch = [
+                [10, 10, 2670, 430]
+
+                ]
  
         self.addPlatforms(self.levelPlatform)
         self.addHitmarker(self.levelHitMarker)
         self.addFloor(self.levelFloor)
         self.addEnemy(self.enemyList)
+        self.addSwitch(self.levelGravitySwitch)
 
     def __init__(self, player):
         """ Create level 1. """

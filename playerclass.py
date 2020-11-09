@@ -75,7 +75,7 @@ class Player(pygame.sprite.Sprite):
             else:
                 self.die()            
  
-    def calc_grav(self):
+    def calc_grav(self):        
         """ Calculate effect of gravity. """
         if self.change_y == 0:
             self.change_y = 1
