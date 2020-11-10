@@ -1,5 +1,4 @@
 import pygame
-import rgbColours
 import enemyclass
 import platformclass
 import invisablehitmarkerclass
@@ -74,7 +73,6 @@ class Level():
         """ Draw everything on this level. """
  
         # Draw the background
-        # screen.fill(rgbColours.BLUE)
         screen.blit(self.background, (self.world_shift, 0))
  
         # Draw all the sprite lists that we have
