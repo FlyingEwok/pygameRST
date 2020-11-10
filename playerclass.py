@@ -1,6 +1,7 @@
 import pygame
 import main
 import rgbColours
+import sounds
 
 class Player(pygame.sprite.Sprite):
     """
@@ -155,6 +156,7 @@ class Player(pygame.sprite.Sprite):
 
             # If it is ok to jump, set our speed upwards
             if len(block_hit_list) > 0 or self.rect.bottom >= main.SCREEN_HEIGHT:
+                sounds.jumpSound.play()
                 self.change_y = -10
         else:
             self.rect.y -= 2        
@@ -169,9 +171,11 @@ class Player(pygame.sprite.Sprite):
 
             # If it is ok to jump, set our speed upwards
             if len(block_hit_list) > 0 or self.rect.top >= main.SCREEN_HEIGHT:
+                sounds.jumpSound.play()
                 self.change_y = 10
 
     def die(self):
+        sounds.playerDeathSound.play()
         self.level.reset()
  
     # Player-controlled movement:

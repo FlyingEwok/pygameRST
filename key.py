@@ -1,5 +1,6 @@
 import pygame
 import rgbColours
+import sounds
 
 # floor for player to collide with
 class Key(pygame.sprite.Sprite): 
@@ -17,4 +18,5 @@ class Key(pygame.sprite.Sprite):
         block_hit_list = pygame.sprite.spritecollide(self, self.player.level.player_list, False)
 
         if len(block_hit_list):
+            sounds.collectKeySound.play()
             self.player.level.key_list.remove(self)

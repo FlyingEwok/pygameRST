@@ -1,9 +1,8 @@
 import pygame_menu
 import pygame
-import main
 import rgbColours
-import gameoverScreen
-''' Create a main menu using pygame menu'''
+import main
+import mainMenu
 
 # pylint: disable=no-member
 
@@ -13,15 +12,13 @@ pygame.display.set_caption("Escape From Genesis Station!")
 icon = pygame.image.load('images/astronaut.png')
 pygame.display.set_icon(icon)
 surface = pygame.display.set_mode((1280, 720))
-pygame.mixer.music.load('sounds/MenuTheme.wav')
-pygame.mixer.music.play(-1)
 
 # Start game
 def start_the_game():
     main.main()
 
-def goToGameover():
-    gameoverScreen.menu.mainloop(gameoverScreen.surface)
+def goToMainMenu():
+    mainMenu.menu.mainloop(mainMenu.surface)
 
 # Title style
 mytheme = pygame_menu.themes.THEME_SOLARIZED.copy()
@@ -38,7 +35,7 @@ mytheme.background_color=myimage
 
 # Text font
 mytheme.widget_font = pygame_menu.font.FONT_8BIT
-mytheme.widget_font_color = rgbColours.CYAN
+mytheme.widget_font_color = rgbColours.DARK_RED
 
 # Create menu
 menu = pygame_menu.Menu(720, 1280, 'Escape From Genesis Station', theme=mytheme)
@@ -46,10 +43,14 @@ menu = pygame_menu.Menu(720, 1280, 'Escape From Genesis Station', theme=mytheme)
 # Add buttons and images
 menu.add_image("images/RobotEnemy1.png", scale=(3, 3))
 
-menu.add_button('Play', start_the_game)
-menu.add_button('SuperPlay', start_the_game)
-menu.add_button('Please Click Me', start_the_game)
-menu.add_button('Free Pizza', goToGameover)
+mytheme.widget_font_size = 40
+menu.add_label("YOU HAVE ESCAPED GENESIS STATION")
+
+mytheme.widget_font_size = 30
+mytheme.widget_font_color = rgbColours.CYAN
+menu.add_button('Play Again', start_the_game)
+menu.add_button('Main Menu', goToMainMenu)
 menu.add_button('Quit', pygame_menu.events.EXIT)
 
 menu.add_image("images/astronaut.png", scale=(3, 3))
+

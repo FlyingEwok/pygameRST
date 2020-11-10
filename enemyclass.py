@@ -1,6 +1,7 @@
 import pygame
 import main
 import rgbColours
+import sounds
 
 class Enemy(pygame.sprite.Sprite):
     """
@@ -14,12 +15,7 @@ class Enemy(pygame.sprite.Sprite):
         # Call the parent's constructor
         super().__init__()
  
-        # Create an image of the block, and fill it with a color.
-        # This could also be an image loaded from the disk.
-        # width = 40
-        # height = 40
-        # self.image = pygame.Surface([width, height])
-        # self.image.fill(rgbColours.GREEN)
+        # Set enemy sprite
         self.image = pygame.image.load('images/RobotEnemy1.png')
  
         # Set a referance to the image rect.
@@ -115,6 +111,7 @@ class Enemy(pygame.sprite.Sprite):
             self.change_y = -10
 
     def destroy(self):
+        sounds.enemyDeathSound.play()
         self.level.enemy_list.remove(self)
     
     def printDebug(self):

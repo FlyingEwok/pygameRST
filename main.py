@@ -2,6 +2,8 @@ import pygame
 import playerclass
 import level1class
 import level2class
+import gameoverScreen
+import pauseScreen
  
  
 # Screen dimensions
@@ -20,6 +22,8 @@ def main():
     pygame.display.set_caption("Escape From Genesis Station!")
     icon = pygame.image.load('images/astronaut.png')
     pygame.display.set_icon(icon)
+    pygame.mixer.music.load('sounds/LevelTheme.wav')
+    pygame.mixer.music.play(-1)
  
     # Create the player
     player = playerclass.Player()
@@ -55,6 +59,8 @@ def main():
                     player.go_right()
                 if event.key == pygame.K_UP:
                     player.jump()
+                if event.key == pygame.K_ESCAPE:
+                    pauseScreen.menu.mainloop(pauseScreen.surface)
  
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT and player.change_x < 0:
@@ -86,6 +92,8 @@ def main():
                 current_level = level_list[current_level_no]
                 player.level = current_level
                 current_level.reset()
+            else:
+                gameoverScreen.menu.mainloop(gameoverScreen.surface)
  
 
         # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
