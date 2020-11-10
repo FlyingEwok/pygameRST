@@ -7,4 +7,3 @@ BLUE = (0, 0, 255)
 GREY = (209, 192, 192)
 CYAN = (0, 255, 255)
 TRANSPARENT = (255, 0, 0, 128)
-#Minor test
