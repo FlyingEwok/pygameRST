@@ -2,6 +2,7 @@ import pygame
 import playerclass
 import level1class
 import level2class
+import gameoverScreen
  
  
 # Screen dimensions
@@ -86,6 +87,8 @@ def main():
                 current_level = level_list[current_level_no]
                 player.level = current_level
                 current_level.reset()
+            else:
+                gameoverScreen.menu.mainloop(gameoverScreen.surface)
  
 
         # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
