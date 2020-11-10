@@ -82,6 +82,7 @@ class Player(pygame.sprite.Sprite):
         # Detect if player is in constant contact with a switch and prevent it from spamming
         if not self.isOnSwitch:
             for switch in switchHit:
+                sounds.gravitySwitch.play()
                 # Flag that the player is currently in contact with a switch
                 self.isOnSwitch = True
                 if not self.invertedGravity:
