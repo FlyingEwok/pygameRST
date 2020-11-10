@@ -1,7 +1,4 @@
 import levelclass
-import platformclass
-import invisablehitmarkerclass
-import enemyclass
 import pygame
 
 # Create platforms for the level

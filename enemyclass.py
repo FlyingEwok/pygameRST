@@ -1,7 +1,6 @@
 import pygame
 import main
 import rgbColours
-import levelclass
 
 class Enemy(pygame.sprite.Sprite):
     """

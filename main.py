@@ -1,9 +1,7 @@
 import pygame
 import playerclass
-import enemyclass
 import level1class
 import level2class
-import levelclass
  
  
 # Screen dimensions
