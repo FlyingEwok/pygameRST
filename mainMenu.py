@@ -13,6 +13,8 @@ pygame.display.set_caption("Escape From Genesis Station!")
 icon = pygame.image.load('images/astronaut.png')
 pygame.display.set_icon(icon)
 surface = pygame.display.set_mode((1280, 720))
+pygame.mixer.music.load('sounds/MenuTheme.wav')
+pygame.mixer.music.play(-1)
 
 # Start game
 def start_the_game():

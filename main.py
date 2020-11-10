@@ -22,6 +22,8 @@ def main():
     pygame.display.set_caption("Escape From Genesis Station!")
     icon = pygame.image.load('images/astronaut.png')
     pygame.display.set_icon(icon)
+    pygame.mixer.music.load('sounds/LevelTheme.wav')
+    pygame.mixer.music.play(-1)
  
     # Create the player
     player = playerclass.Player()
