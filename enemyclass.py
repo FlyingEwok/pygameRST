@@ -59,9 +59,11 @@ class Enemy(pygame.sprite.Sprite):
             # change movement direction to left
             if self.change_x > 0:
                 self.change_x = -2
+                self.image = pygame.image.load('images/RobotEnemy1Left.png')
             elif self.change_x < 0:
                 # Otherwise if we are moving left, do the opposite.
                 self.change_x = 2
+                self.image = pygame.image.load('images/RobotEnemy1.png')
  
         # Move up/down
         self.rect.y += self.change_y
