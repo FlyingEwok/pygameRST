@@ -18,6 +18,8 @@ def start_the_game():
     main.main()
 
 def goToMainMenu():
+    pygame.mixer.music.load('sounds/MenuTheme.wav')
+    pygame.mixer.music.play(-1)
     mainMenu.menu.mainloop(mainMenu.surface)
 
 # Title style
