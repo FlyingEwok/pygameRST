@@ -60,7 +60,7 @@ class Level_02(levelclass.Level):
         self.addSwitch(self.levelGravitySwitch)
 
     def __init__(self, player):
-        """ Create level 1. """
+        """ Create level 2. """
  
         # Call the parent constructor
         levelclass.Level.__init__(self, player)
