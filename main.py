@@ -3,6 +3,7 @@ import playerclass
 import level1class
 import level2class
 import gameoverScreen
+import pauseScreen
  
  
 # Screen dimensions
@@ -56,6 +57,8 @@ def main():
                     player.go_right()
                 if event.key == pygame.K_UP:
                     player.jump()
+                if event.key == pygame.K_ESCAPE:
+                    pauseScreen.menu.mainloop(pauseScreen.surface)
  
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT and player.change_x < 0:
