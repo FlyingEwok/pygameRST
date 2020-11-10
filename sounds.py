@@ -1,6 +1,7 @@
 import pygame
 
 # intialize pygame
+# pylint: disable=no-member
 pygame.init()
 
 # Sound effects
