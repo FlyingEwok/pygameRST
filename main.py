@@ -75,7 +75,7 @@ def main():
             else:
                 pauseMenu.update(events)  
     
-        if(not pauseMenu.is_enabled()):
+        if not pauseMenu.is_enabled():
             # Update items in the level
             current_level.update()
 
