@@ -53,6 +53,7 @@ def main():
     while not done:
         events = pygame.event.get()
         for event in events:
+            # Allow game inputs to be active while pause menu is not enabled
             if not pauseMenu.is_enabled():            
                 if event.type == pygame.QUIT:
                     done = True
@@ -72,9 +73,13 @@ def main():
                         player.stop()
                     if event.key == pygame.K_RIGHT and player.change_x > 0:
                         player.stop()        
-            else:
+            else: # Disable game inputs and redirect events to pauseMenu
                 pauseMenu.update(events)  
-    
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        pauseMenu.disable()
+
+        # Disable game update while the pause menu is enabled
         if not pauseMenu.is_enabled():
             # Update items in the level
             current_level.update()
