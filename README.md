@@ -34,9 +34,9 @@ Don't touch the robots.
 
 ## The Story
 
-It was a dark quiet night on Genesis, a space station.  Out the port window the distant stars twinkled and glowed.  Suddenly, there was a noise, a loud boom, then the silence returned.
+It was a dark quiet night on Genesis space station. Out the port window the distant stars twinkled and glowed. Suddenly, there was a noise, a loud boom, then the silence returned.
 
-You venture out of your cabin, wondering what happened.  You look around but no crew could be found.  You seem to be all alone.
+You venture out of your cabin, wondering what happened. You look around but no crew could be found. You seem to be all alone.
 
 This is you, you are an astronaut,
 
