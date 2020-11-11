@@ -116,8 +116,8 @@ class Player(pygame.sprite.Sprite):
                 self.die()            
  
     def calc_grav(self):        
+        """ Calculate effect of gravity. """        
         if not self.invertedGravity:
-            """ Calculate effect of gravity. """
             if self.change_y == 0:
                 self.change_y = 1
             else:
@@ -128,7 +128,6 @@ class Player(pygame.sprite.Sprite):
                 self.change_y = 0
                 self.rect.y = main.SCREEN_HEIGHT - self.rect.height
         else:
-            """ Calculate effect of gravity. """
             if self.change_y == 0:
                 self.change_y = -1
             else:
