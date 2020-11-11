@@ -7,7 +7,7 @@ import gameoverScreen
 
 # pylint: disable=no-member
 
-# Intialization
+# Initialization
 pygame.init()
 pygame.display.set_caption("Escape From Genesis Station!")
 icon = pygame.image.load('images/astronaut.png')

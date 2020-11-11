@@ -57,7 +57,7 @@ class Level():
         self.create()
         
  
-    # Update everythign on this level
+    # Update everything on this level
     def update(self):
         """ Update everything in this level."""
         self.platform_list.update()

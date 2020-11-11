@@ -1,6 +1,6 @@
 import pygame
 
-# intialize pygame
+# initialize pygame
 # pylint: disable=no-member
 pygame.init()
 

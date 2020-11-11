@@ -18,7 +18,7 @@ class Player(pygame.sprite.Sprite):
         # Sprite for the character
         self.image = pygame.image.load('images/astronaut.png')
  
-        # Set a referance to the image rect.
+        # Set a reference to the image rect.
         self.rect = self.image.get_rect()
  
         # Set speed vector of player
@@ -121,7 +121,7 @@ class Player(pygame.sprite.Sprite):
             if self.change_y == 0:
                 self.change_y = 1
             else:
-                self.change_y += 0.35      # Default gravity = 0.35, High gravity = 0.55, Lowest gravity = 
+                self.change_y += 0.35      
     
             # See if we are on the ground.
             if self.rect.y >= main.SCREEN_HEIGHT - self.rect.height and self.change_y >= 0:
@@ -132,7 +132,7 @@ class Player(pygame.sprite.Sprite):
             if self.change_y == 0:
                 self.change_y = -1
             else:
-                self.change_y -= 0.35      # Default gravity = 0.35, High gravity = 0.55, Lowest gravity = 
+                self.change_y -= 0.35    
     
             # See if we are on the ground.
             if self.rect.y >= main.SCREEN_HEIGHT - self.rect.height and self.change_y >= 0:
