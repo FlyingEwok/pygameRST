@@ -26,7 +26,7 @@ Gravity is a funny thing.
 
 Don't touch the robots.
 
-# Controls
+## Controls
 
 - `Left` & `Right` to move horizontally
 - `Up` to jump
