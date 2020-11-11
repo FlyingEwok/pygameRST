@@ -1,4 +1,5 @@
 import pygame_menu
+import pygame_menu.locals as _locals
 import pygame
 import rgbColours
 import main
@@ -37,7 +38,7 @@ mytheme.background_color=myimage
 
 # Text font
 mytheme.widget_font = pygame_menu.font.FONT_8BIT
-mytheme.widget_font_color = rgbColours.DARK_RED
+mytheme.widget_font_color = rgbColours.FANCY_RED
 
 # Create menu
 menu = pygame_menu.Menu(720, 1280, 'Escape From Genesis Station', theme=mytheme)
@@ -46,7 +47,8 @@ menu = pygame_menu.Menu(720, 1280, 'Escape From Genesis Station', theme=mytheme)
 menu.add_image("images/RobotEnemy1.png", scale=(3, 3))
 
 mytheme.widget_font_size = 40
-menu.add_label("YOU HAVE ESCAPED GENESIS STATION")
+
+menu.add_label("YOU HAVE ESCAPED GENESIS STATION", shadow=True, shadow_color=rgbColours.DARK_GREY, shadow_position =_locals.POSITION_SOUTHEAST, shadow_offset=3)
 
 mytheme.widget_font_size = 30
 mytheme.widget_font_color = rgbColours.CYAN

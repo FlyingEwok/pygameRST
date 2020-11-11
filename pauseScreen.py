@@ -3,6 +3,7 @@ import pygame
 import rgbColours
 import main
 import mainMenu
+import gameoverScreen
 
 # pylint: disable=no-member
 
@@ -22,33 +23,42 @@ def goToMainMenu():
     pygame.mixer.music.play(-1)
     mainMenu.menu.mainloop(mainMenu.surface)
 
-# Title style
-mytheme = pygame_menu.themes.THEME_SOLARIZED.copy()
-mytheme.title_background_color=(0, 0, 0) # Black, like my soul
-mytheme.title_font_size = 25
-mytheme.title_font = pygame_menu.font.FONT_8BIT # When 16 bits are too many
+def resume(menu):
+    menu.disable()
 
-# Background image
-myimage = pygame_menu.baseimage.BaseImage(
-    image_path="images/SpaceBackgroundWithGlass.png",
-    drawing_mode=pygame_menu.baseimage.IMAGE_MODE_REPEAT_XY
-)
-mytheme.background_color=myimage
+def goToGameover():
+    gameoverScreen.menu.mainloop(gameoverScreen.surface)
 
-# Text font
-mytheme.widget_font = pygame_menu.font.FONT_8BIT
-mytheme.widget_font_color = rgbColours.DARK_RED
+def createPauseScreen():
+    # Title style
+    mytheme = pygame_menu.themes.THEME_SOLARIZED.copy()
+    mytheme.title_background_color=(0, 0, 0) # Black, like my soul
+    mytheme.title_font_size = 25
+    mytheme.title_font = pygame_menu.font.FONT_8BIT # When 16 bits are too many
 
-# Create menu
-menu = pygame_menu.Menu(720, 1280, 'Escape From Genesis Station', theme=mytheme)
+    # Background image
+    myimage = pygame_menu.baseimage.BaseImage(
+        image_path="images/SpaceBackgroundWithGlass.png",
+        drawing_mode=pygame_menu.baseimage.IMAGE_MODE_REPEAT_XY
+    )
+    mytheme.background_color=myimage
 
-# Add buttons and images
-menu.add_image("images/RobotEnemy1.png", scale=(3, 3))
+    # Text font
+    mytheme.widget_font = pygame_menu.font.FONT_8BIT
+    mytheme.widget_font_color = rgbColours.CYAN
 
-mytheme.widget_font_color = rgbColours.CYAN
-menu.add_button('Continue', start_the_game)
-menu.add_button('Main Menu', goToMainMenu)
-menu.add_button('Quit', pygame_menu.events.EXIT)
+    # Create menu
+    menu = pygame_menu.Menu(720, 1280, 'Escape From Genesis Station', theme=mytheme)
 
-menu.add_image("images/astronaut.png", scale=(3, 3))
+    # Add buttons and images
+    menu.add_image("images/RobotEnemy1.png", scale=(3, 3))
+    menu.add_button('Continue', menu.disable)
+    menu.add_button('Restart', start_the_game)
+    menu.add_button('More Free Pizza', goToGameover)
+    menu.add_button('Main Menu', goToMainMenu)
+    menu.add_button('Quit', pygame_menu.events.EXIT)
+
+    menu.add_image("images/astronaut.png", scale=(3, 3))
+
+    return menu
 
