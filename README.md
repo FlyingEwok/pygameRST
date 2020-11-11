@@ -4,30 +4,48 @@
 
 This game uses Python, to setup the requirements run,
 
-### Linux
 ```bash
-pip3 install -r requirementsLinux.txt
+pip3 install -r requirements.txt
 ```
 
-### Windows
+## Running the Game
+
+To run the game, simply run,
+
 ```bash
-pip3 install -r requirementsWindows.txt
+python3 game.py
 ```
 
 ## Game Play
 
 Here is how you play the game...
 
+Collect all the keys in each level.
+
+Gavity is a funny thing.
+
+Don't touch the robots.
+
+# Controls
+
+- `Left` & `Right` to move horizontally
+- `Up` to jump
+- `Esc` to pause/resume
+
 ## The Story
 
-Lovely screenshots will go here
+It was a dark quiet night on Genesis, a space station.  Out the port window the distant stars twinkled and glowed.  Suddently there was a noise, a loud boom, then the silence returned.
 
-This is the astronaut,
+You venture out of your cabin, wondering what happened.  You look around but no crew could be found.  You seem to be all alone.
+
+This is you, you are an astronaut,
 
 ![Astronaut](images/astronaut.png)
 
-He has to take on
+You have to take on the robots,
 
-![RobotEnemy](images/RobotEnemy1.png)
+![Robot Enemy](images/RobotEnemy1.png)
 
-Who will win? You decide, winner gets 🍕
+Escape is your mission.
+
+Who will win? You decide, winner gets 🍕.
