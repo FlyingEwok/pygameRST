@@ -10,8 +10,7 @@ class Key(pygame.sprite.Sprite):
             """
         super().__init__()
         # pylint: disable=no-member
-        self.image = pygame.Surface([width, height], pygame.SRCALPHA)
-        self.image.fill(rgbColours.BLUE)
+        self.image = pygame.image.load('images/Key.png')
         self.rect = self.image.get_rect()
 
     def update(self):

@@ -1,5 +1,6 @@
 import pygame
 import rgbColours
+import sounds
 
 # floor for player to collide with
 class Gateway(pygame.sprite.Sprite): 
@@ -15,4 +16,5 @@ class Gateway(pygame.sprite.Sprite):
 
     def update(self):
         if len(self.player.level.key_list) == 0:
+            sounds.gateSound.play()
             self.player.level.gateway_list.remove(self)
