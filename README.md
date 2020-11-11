@@ -36,7 +36,7 @@ Don't touch the robots.
 
 It was a dark quiet night on Genesis space station. Out the port window the distant stars twinkled and glowed. Suddenly, there was a noise, a loud boom, then the silence returned.
 
-You venture out of your cabin, wondering what happened. You look around but no crew could be found. You seem to be all alone.
+You venture out of your cabin, wondering what happened. You look around to find that your space station has been infested with robots. You start running. Escape is your only mission.
 
 This is you, you are an astronaut,
 
